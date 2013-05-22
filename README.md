@@ -3,10 +3,10 @@ windows nodebob
 
 windows nodebob is a **build tool** for **node-webkit**.
 
-Write your node-webkit project inside the ```/app``` folder and build your native win application in just one click!
+Write your node-webkit project inside the ```app``` folder and build your native win application in just one click!
 
-* nodebob creates a folder under the name ```release``` that contains all the necessary files to create a standalone application without dependencies
-* you can also add your custom application icon in ```app/app.ico```
+* nodebob creates the folder ```release``` that contains all the necessary files to build a standalone application without dependencies
+* you can also add your custom application icon in ```nodebob/app/app.ico```
     
 **node-webkit** is an app runtime based on ```Chromium``` and ```node.js```.
 

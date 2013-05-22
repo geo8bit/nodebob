@@ -12,7 +12,7 @@ if not exist release md release
 
 echo Creating .nw file...
 cd buildTools\7z
-7z a -tzip %NWZIP_PATH% %CUR_DIR%\app\*.*
+7z a -tzip %NWZIP_PATH% %CUR_DIR%\app\*
 cd ..\..
 
 echo Creating .exe file...
