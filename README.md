@@ -11,7 +11,9 @@ Write your node-webkit project inside the ```/app``` folder and build your nativ
 **node-webkit** is an app runtime based on ```Chromium``` and ```node.js```.
 
 > You can write native apps in HTML and Javascript with node-webkit. It also lets you to call Node.js modules directly from DOM and enables a new way of writing native applications with all Web technologies.
+
 **Features**
+
 * Apps written in modern HTML5, CSS3, JS and WebGL.
 * Complete support for Node.js APIs and all its third party modules.
 * Good performance: Node and WebKit runs in the same thread: Function calls are made straightforward;
