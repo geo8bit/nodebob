@@ -1,0 +1,197 @@
+-------------------------------------------------------
+Anolis.Resourcer - 0.9.0 Beta, released 2009-09-01
+-------------------------------------------------------
+* Resourcer changes
+	* Added a menubar for those seeking Reshacker-like UI (you can disable either the menubar or the toolbar, or have both enabled at the same time)
+		Note the menubar does not expose any new functionality that isn't already (directly or indirectly) accessible via the Toolbar (except for Help Contents)
+		* You can hide either the menubar or the toolbar, but not both
+		* A context menu on the toolbar lets you choose icon size and allows you to hide or show the toolbar or menubar
+	* Thumbnails for bitmaps now maintain aspect ratio (rather than stretching to fill). Bitmaps smaller than the thumbnail area are now centred, rather than upscaled
+	* Added a Help file, access it via Help > Help Topics
+	* If a resource name only has one lang then its tree view node will not be expanded unless explicitly expanded
+	* Various improvements to the Batch Export form
+* Library changes
+	* Fixed an issue with editing resources in Windows Vista (and later) where files with RC Config entries (listed as "MUI" resource types) could not be modified, even though the operation completed successfully
+		The solution has been implemented as a workaround. A more purer solution exists, but would require implementing our own PE/COFF format reader, which is too much trouble
+	* Fixed a major issue where icon directories lacking bit-depth information would be applied to a resource source without that information
+		Bit-depths are now obtained from the DIB information if they're missing
+		NOTE: PNG format subimage data is always assumed to be 32bpp
+	* You can now choose to replace icons by replacing the subimages rather than merging them. Click the "Edit Factory Options..." button on the Replace Resource Form for more details.
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.9 Beta, released 2009-06-28
+-------------------------------------------------------
+
+* Resourcer changes
+	* On the Add Resource form, the system install language is now the default, rather than the current UI language
+	* The String Table grid now auto-sets row height so all the text is visible
+	* Fixed a problem where dialogs would lock up after a short while
+	* Improved Batch Export:
+		* More settings are saved to the settings file
+		* You can now opt to export resources if they're larger than a size threshold
+		* Added more export options (but removed the previously unimplemented option to extract only the current lang)
+		* If you have a file open in the main window it will be selected as the source file automatically when you open the Batch Export window
+	* Fixed a bug where clicking the Back button would cause a Null Reference Exception
+	* Stopped the Extensibility File Open dialog from setting the filename to "fileDialog1"
+	* Anolis Package XML is now generated for you in the Pending Operations window
+	* Windows now open in the middle of the main window, rather than at the Windows-defined default location
+	* Updated the state icons in the treeview
+	
+* Library changes
+	* When saving Win32 PE files, the PE/NT Checksum is recalculated and saved to the file, making modifype / pechecksum no-longer necessary. 
+	* Cursor Directory resources are now being saved in the right format
+	* Icon handling code reworked and rewritten
+	* RES file support improved:
+		* RES files are now writable (and not read-only as they were in earlier releases)
+		* Empty 32-bit RES files are now opened correctly
+		* You can now create new (empty) RES and Win32 PE files
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.8 Beta Re-Release, released 2009-05-26
+-------------------------------------------------------
+To coincide with Vishal Gupta blogging about Resourcer I've updated the packaging of the program:
+a) I've removed the *.pdb file; the program is stable enough without the need for 800KB worth of debugging information
+b) I've added a file which is a quick command-line reference
+
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.8 Beta, released 2009-05-22
+-------------------------------------------------------
+There's a pretty serious race condition in the loading of the list view in the 0.8.7 release; I've fixed it in today's 0.8.8 release. I've also taken the opportunity to finally fix some things up:
+
+Changelist for 0.8.8
+
+    * Fixed an unhandled exception where loading the list view (the thumbnails and icons) would cause an ArgumentOutOfRangeException. This is caused by a race condition with the ImageList component. The fix does mean the list loads about 5-10% slower than usual, but this is hardly a big deal. In future I'll rework the mechanism to restore full speed.
+    * Menus and Dialogs changes
+          o MenuEx structures are now interpreted correctly, meaning an end to caption strings missing a few characters
+          o Dialogs are now displayed with the native dialog display libraries. HOWEVER they only seem to work for a few seconds before locking up and freezing the whole application. This probably has something to do with not handling the DialogProc correctly. I'll fix this in time for 0.9
+          o The tree view and property grid now shows things and works... to an extent. I haven't properly tested it though.
+    * Resource casting now works: if Resourcer does not correctly identify a given resource you can cast it to the appropriate one. This feature is largely redundant since it gets it right 99.9% of the time, so it's only really useful when working with badly authored files
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.7 Beta, released 2009-05-21
+-------------------------------------------------------
+Here's a new release of Resourcer for you.
+What's new in this release?
+
+    * Significantly faster list view loading. It now takes fractions-of-a-second to load as opposed to a full minute in some cases. This is due to improved ListView / ImageList behaviour
+          o But there does remain a temporal bug where the images don't show at all under certain circumstances. If you can produce the issue (you'll get an error message with a Continue and Quit button) let me know so I can solve it.
+    * Batch Export mode
+          o You can now batch-export resources from all files in a directory en-masse. In future this feature will also produce a pretty web-page report as well.
+    * Settings are now carried over from earlier versions
+    * Check-for-Updates now works (I've fixed the anol.is domain name, see below)
+    * Minor tweaks here and there
+    * Still no change to Dialog box handling though, I'll fix that for version 0.9
+    * Icon subimages are now exported as PNG by default and not as new .ico files (containing only 1 subimage) with an incorrect .bmp extension
+
+Oh, and anol.is is now back online after going through a lot of trouble with the Icelandic DNS people which also involved me logging a priority support request with my colocation provider at 3AM this morning. (I thought my subnet was hijacked by Ukrainians), this means that check-for-updates will now work fine. 
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.5 Beta, released 2009-04-17
+-------------------------------------------------------
+
+Whilst the version number is only 0.0.2 different from 0.8.3 the codebase has been through a lot of changes.
+
+Here's the major changes:
+
+! Major Features
+* Extensibility now enabled, you can author your own ResourceData, ResourceSource, and TypeViewer subclasses and have them loaded into the program. Specify your assemblies from the Options page. (This feature is untested, but should work in theory).
+* Support for String Tables, Dialogs, and Menus (all read-only for now)
+** Dialogs support is unfinished. 0.9 will fix this. Right now you can just see the general layout of a dialog and get a list of the controls contained within
+** Menus support is buggy and the UI is incomplete. Certain menus aren't parsed correctly. I'm still looking into this
+* Backup Source menu option now enabled. I couldn't figure out a way to safely implement Save As support so I removed it
+* The Most Recently Used list is now persisted between program sessions
+* Added Back and Forward buttons above the tree view for more intuitive navigation
+* Added ability to view all the types as the root of the tree
+* Added icons for resource types in the list view. I need to find or create icons for other common types like String Tables and Versions though
+* I've removed clutter and cruft from the About page. Keeping it simple for now.
+* I've fixed various threading issues so playing rough with the UI won't make it crash.
+* Added read-only {"*.res support. You can now enumerate, view, and extract resources in compiled *.res files. I'll add write support later on"}
+* Drag and Drop support improved. When you drag a file over the main window you'll be presented with 3 choices: Load it as a source, add it as a new resource, or replace the current existing resource.
+
+! Under the Hood
+* I've moved ResourceSources to a proper Factory pattern (like ResourceData)
+* Moved various embedded package management features to Core from Installer
+* Installer now has a better Aero Wizard implementation. I won't release Installer 0.7.5 until I've got that bit working good though. Gimmie a few more days.
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.3 Beta, released 2009-03-19
+-------------------------------------------------------
+This release corrects a serious bug with Bitmap handling in 0.8.2 where it didn't remove the bitmap file header from bitmaps, causing many programs to fail showing bitmaps if they were patched.
+
+This is also the same version that was uploaded to DeviantArt on the 17th March.
+
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8.2 Beta, released 2009-03-09
+-------------------------------------------------------
+This isn't the 0.8.5 release I promised earlier but an incremental release which adds a lot of improvements.
+
+Main features:
+* Improved Icon Directory handling
+** Icon handling is now more intelligent. Adding an icon to an exe now results in the union of icon subimages from both the ico and exe, rather than replacing the subimages in the exe with that of the ico. In the 0.8.5 release I'll add an option to choose what behaviour you want.
+* Command-line arguments
+** Resourcer now supports command-line arguments. See the readme file insize the zip archive. 0.8.2 has a partial implementation, a few things are missing (like batch "script" support, extracting multiple resources at once, and deleting individual resources)
+* Pending Operations window
+** Choose the "Pending operations" menu item on the Save button to see a list of changes that will take effect when you press Save (note that the Cancel button on this form isn't currently wired up). The Back and Up buttons are currently disabled too.
+* Tree view updated more often
+
+
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.8 Beta, released 2009-02-12
+-------------------------------------------------------
+* List View shows a progress bar when loading images and displays a warning when attempting to load so many it might lock-up temporarily. This is due to behaviour in Win32's ImageList. I'm still researching workarounds, but this shouldn't affect too many people.
+* VS_VERSIONINFO support
+* You can now replace resources, including icons, with a GUI form. It automatically deletes child-images when replacing icons, but don't cancel an icon insert operation just yet as the original images will not be restored (which will break the DLL or EXE you're modifying)
+* Check for Updates feature.
+* Association with exe, dll, cpl, scr, and ocx files. This is toggable on the Options page
+* The MediaViewer (aka Windows Media Player) has been removed until I figure out a workaround for not including an extra ~300KB worth of ActiveX interop assemblies in addition to x64 support.
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.7 Beta, released 2009-01-25
+-------------------------------------------------------
+* UI Improvements
+** Icons in the tree-view to identify types (but I feel this clutters things up)
+** Clicking on a ResourceType node opens up a ListView showing all the ResourceNames
+** Clicking on a ResourceName node opens up the ResourceData if the name has only one child ResourceLang, otherwise it shows a list of ResourceLangs in a listview
+** The Resource icons have been updated for uniform appearance
+** Add Resource form improved, no-longer freezes for a second as it loads
+** Replace Resource form added, but is non-functional
+** "State Icons" are now shown in the tree view next to Resources that are to be added, updated, or deleted
+** The TypeViewers list no-longer lists incompatible viewers and shows the Raw Binary viewer first
+** The compact toolbar now works
+** Minor changes to the Options form, added mention about Be.HexBox (used in the Raw Binary viewer but it  has a few issues, I'll look into submitting a patch to them sometime)
+
+* Library Improvements
+** Support for RIFF/AVI files (this was super-trivial to implement, but adding support for the WMP ActiveX control to play the files means the executable's size grows by 336KB. I don't know of any way around this.
+** You can now export Icon Directories to *.ico files
+** A few stability improvements here and there
+** Support for all the BMP formats now, including the OS/2 BITMAPCOREINFO format (used in cards.dll) up to the modern BITMAPV5INFO format (rarely used, I've never seen it in the wild)
+** And a whole load of other stuff I can't remember doing but shows up in the diffs anyway
+
+* Misc Notes and Known Issues
+** This executable was packed together using ILMerge (which is why there's only 2 files rather than 9)
+** You can replace resources if you're careful. First delete the resource (there is no visual notification, sorry), save the resource, then add-in your replacement resource.
+** For some reason the icon file contained within the Resourcer executable is corrupted (the 32-bit 256x256 PNG image supported by Vista) is written to disk as a 13x13 image. I believe csc is responsible for this and is beyond my control.
+
+-------------------------------------------------------
+Anolis.Resourcer - 0.6 Alpha, released 2008-12-31
+-------------------------------------------------------
+
+This is the first public release, but it's nothing too special. It's a release of the Anolis.Resourcer binaries and associated debug files (useful if it crashes on your system).
+
+Resourcer's main bits are functionally complete, but the UI isn't entirely wired up just yet. Right now you can extract resources and add in new ones through the GUI. Support for replacing and deleting resources is already in the shared library, but not wired up yet; that will be in the next release.
+
+There are a few known limitations:
+a) Bitmap resource files using Windows 3.11 (and earlier)'s BITMAPCOREINFO structure are not yet supported. This does not affect any post-Windows 95 files, but some files lurking in Windows, like cards.dll contain BITMAPCOREINFO-type bitmaps and will cause Resourcer to fail.
+b) The Add Resource Data GUI isn't fully wired up, and it ignores any custom Resource Language selection.
+c) It runs on .NET2.0; maybe I'll get round to a native C++ port in future, I used C# so I could minimise development time, and Vista has .NET2.0 built-in anyway.
+d) I take ages getting releases done. Blame my university degree programme's requirements to actually spend time attending classes.
+e) Oh, and the Options page is totally non-functional. Don't bother changing anything, it won't do squat.
+
+And here's a bunch of reasons why Anolis.Resourcer is better than ResHacker and XN Resource Editor:
+a) Full Vista support (Vista introduces a new resource model for MUI files)
+b) Full x64 support (x64 files make ResHacker crash)
+c) Easier to use GUI (all-button UI, no complicated menus, yet just as functional (and way more prettier))
+d) GPL licensed C# with public SVN (ResHacker is closed-source, and XN Resource Editor is under some Shared Source license and written in Borland Delphi)

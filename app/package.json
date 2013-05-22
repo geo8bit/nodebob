@@ -1,0 +1,10 @@
+{
+  "name": "pokaz",
+  "main": "index.html",  
+  "window": {
+    "icon": "app.ico",
+	"width" 	: 330,
+	"height"	: 100,
+	"toolbar"	: false
+  }
+}
