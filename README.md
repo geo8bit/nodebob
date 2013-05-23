@@ -1,12 +1,12 @@
-windows nodebob
+nodebob
 ---
 
-windows nodebob is a **build tool** for **node-webkit**.
+nodebob is a **build tool** for **node-webkit** written in windows batch script.
 
 Write your node-webkit project inside the ```app``` folder and build your native win application in just one click!
 
 * nodebob creates the folder ```release``` that contains all the necessary files to build a standalone application without dependencies
-* you can also add your custom application icon in ```nodebob/app/app.ico```
+* you can also add your custom application icon in ```app/app.ico```
     
 **node-webkit** is an app runtime based on ```Chromium``` and ```node.js```.
 
@@ -25,7 +25,7 @@ Write your node-webkit project inside the ```app``` folder and build your native
 
 Tech
 -
-windows nodebob uses a number of open source projects to work properly:
+nodebob uses a number of open source projects to work properly:
 
 * [7-zip] - a lightware file archiver, v9.20
 * [Anolis Resourcer] - a windows resource editor, v0.9.0
