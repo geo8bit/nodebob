@@ -1,4 +1,13 @@
 {
-  "name"	: "nodebob",
-  "version"	: "0.2.0-beta"
+	"name"	: "nodebob",
+	"version"	: "0.2.0",
+	"dependencies": {
+		"shelljs": "0.1.4"
+	},
+	"description": "A build tool for node.js written in node.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/geo8bit/nodebob.git"
+	},
+	"homepage": "http://github.com/geo8bit/nodebob"
 }

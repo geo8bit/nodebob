@@ -1,0 +1,22 @@
+{
+    "activeProfile": "default",
+    "profiles": {
+        "default": {
+            "appName": "app",
+            "appPath": "app",
+            "appIco": "app\\app.ico",
+            "outputPath": "output",
+            "ffmpegsumo": true,
+            "libEGL": false,
+            "libGLESv2": false,
+            "keepPackage": false
+        },
+        "example1": {
+            "appName": "My App v1.0",
+            "appPath": "myapp",
+            "appIco": "myapp\\myico.ico",
+            "package": "myapp\\mypackage.nw",
+            "keepPackage": true
+        }
+    }
+}
