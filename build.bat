@@ -1,7 +1,7 @@
 @echo off
 
 set CUR_DIR="%CD%"
-set EXE_PATH=%CUR_DIR%\release\app.exe
+set EXE_PATH=%CUR_DIR%\release\nw.exe
 set ICO_PATH=%CUR_DIR%\app\app.ico
 set NWEXE_PATH=%CUR_DIR%\buildTools\nw\nw.exe
 set NWZIP_PATH=%CUR_DIR%\release\app.nw
@@ -22,7 +22,7 @@ if not exist release md release
 echo.
 call :ColorText 0a "Creating app package..."
 cd buildTools\7z
-7z a -tzip %NWZIP_PATH% %CUR_DIR%\app\*
+7z a -r -tzip %NWZIP_PATH% ..\..\app\*
 cd ..\..
 
 echo.
