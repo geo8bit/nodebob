@@ -37,18 +37,18 @@ Version
 
 Windows versions
 -
-Tested on ```Windows 7 x64```.
+Tested on `Windows 7 32-bit & 64-bit`.
 
 Quick start
 -
 
 **Install**
 
-```git clone https://github.com/geo8bit/nodebob.git nodebob```
+`git clone https://github.com/geo8bit/nodebob.git nodebob`
 
 **Run**
 
-Execute ```nodebob/build.bat```
+Execute `nodebob/build.bat`
 
 License
 -
