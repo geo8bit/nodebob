@@ -1,6 +1,6 @@
 @echo off
 
-set CUR_DIR=%CD%
+set CUR_DIR="%CD%"
 set EXE_PATH=%CUR_DIR%\release\app.exe
 set ICO_PATH=%CUR_DIR%\app\app.ico
 set NWEXE_PATH=%CUR_DIR%\buildTools\nw\nw.exe
