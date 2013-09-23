@@ -56,6 +56,6 @@ License
 
 [node-webkit]: https://github.com/rogerwang/node-webkit
 [7-zip]: http://www.7-zip.org/
-[Anolis Resourcer]: http://www.anol.is/
+[Anolis Resourcer]: http://anolis.codeplex.com/
 [GPLv2]: http://www.gnu.org/licenses/gpl-2.0.html
 [1]: https://github.com/rogerwang/node-webkit#introduction 
