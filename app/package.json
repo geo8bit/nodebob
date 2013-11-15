@@ -1,5 +1,5 @@
 {
-  "name": "pokaz",
+  "name": "nodeapp",
   "main": "index.html",  
   "window": {
     "icon": "app.ico",

@@ -1,4 +1,4 @@
-nodebob
+nodebob ( ͡° ͜ʖ ͡°)
 ---
 
 nodebob is a **build tool** for **node-webkit** written in windows batch script.
@@ -52,10 +52,9 @@ Execute `nodebob/build.bat`
 
 License
 -
-[GPLv2]
+MIT
 
 [node-webkit]: https://github.com/rogerwang/node-webkit
 [7-zip]: http://www.7-zip.org/
 [Anolis Resourcer]: http://anolis.codeplex.com/
-[GPLv2]: http://www.gnu.org/licenses/gpl-2.0.html
 [1]: https://github.com/rogerwang/node-webkit#introduction 
