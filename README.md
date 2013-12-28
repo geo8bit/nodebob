@@ -29,7 +29,7 @@ nodebob uses a number of open source projects to work properly:
 
 * [7-zip] - a lightware file archiver, v9.20
 * [Anolis Resourcer] - a windows resource editor, v0.9.0
-* [node-webkit] - v0.5.1-win32
+* [node-webkit] - v0.8.3-win32
 
 Version
 -
