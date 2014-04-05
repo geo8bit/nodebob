@@ -1,2 +1,4 @@
 release/
 release.osx/
+release.linux-ia32/
+release.linux-x64/
