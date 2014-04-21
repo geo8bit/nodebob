@@ -12,7 +12,7 @@ echo "Creating bundle for osx..."
 rm -Rf $CUR_DIR/release.osx/app.app
 cp -R $CUR_DIR/release.osx/nw/node-webkit.app $CUR_DIR/release.osx/app.app
 cp -R $CUR_DIR/app $CUR_DIR/release.osx/app.app/Contents/Resources/app.nw
-cp app/Info.plist $CUR_DIR/release.osx/app.app/Contents/Info.plist
+cp $CUR_DIR/app/Info.plist $CUR_DIR/release.osx/app.app/Contents/Info.plist
 sips -s format tiff $CUR_DIR/app/app.ico --out $CUR_DIR/release.osx/app_icon.tiff > /dev/null
 tiff2icns -noLarge $CUR_DIR/release.osx/app_icon.tiff $CUR_DIR/release.osx/app.app/Contents/Resources/nw.icns
 echo "Deleting temporary files..."
