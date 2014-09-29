@@ -5,7 +5,7 @@ echo
 CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mkdir -p $CUR_DIR/release.osx
 
-echo "Extractiong node-webkit..."
+echo "Extracting node-webkit..."
 rm -Rf $CUR_DIR/release.osx/nw
 unzip $CUR_DIR/buildTools/nw.osx/node-webkit-v0.8.5-osx-ia32.zip -d $CUR_DIR/release.osx/nw > /dev/null
 echo "Creating bundle for osx..."
