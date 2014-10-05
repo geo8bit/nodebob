@@ -8,7 +8,9 @@ CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Creating bundle for linux-ia32..."
 mkdir -p release.linux-ia32
 rm -f release.linux-ia32/app.nw
-zip -b app -r release.linux-ia32/app.nw app/*
+cd app
+zip -r ../release.linux-ia32/app.nw *
+cd ..
 cat buildTools/nw.linux-ia32/nw release.linux-ia32/app.nw > release.linux-ia32/app
 chmod +x release.linux-ia32/app
 if [ ! -f release.linux-ia32/nw.pak ]; then
